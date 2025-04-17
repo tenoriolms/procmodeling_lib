@@ -1,0 +1,7 @@
+.ipynb_checkpoints/
+.vscode/
+procmodeling.egg-info/
+__pycache__/
+build/
+dist/
+
