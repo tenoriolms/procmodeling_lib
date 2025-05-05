@@ -7,7 +7,7 @@ setup(
     description='',
     long_description='',#open('README.md').read(),
     long_description_content_type='text/markdown',
-    url='https://github.com/tenoriolms/bioprocmol',
+    url='https://github.com/tenoriolms/procmodeling_lib',
     packages=find_packages(),
     install_requires=[
         'numpy>=2.2.4', 

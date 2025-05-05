@@ -1,0 +1,24 @@
+dydt[0] = -a*y[1] + d1f + 1/Fdd_id
+dydt[1] = b + y[0]*Aer
+
+dydt = -y[1] + sin(t) +d1f
+dydt[a] = -y[1] + sin(t)-A_b**2
+
+d1f = t*0.1
+Aer = a*d1f + 8 + sqrt(Fdd_id)
+Fdd_id = d1f**2/33.6
+
+
+
+a=1
+b=5
+
+
+## 1 - The expressions are ruled by python syntax.
+## 2 - the "y", "t", and "dy/dt" are reserved words to independent variables, time and ODE indication;
+## 3 - ODE expressions needs START with "dy/dt" followed by its index "[i]".
+## 4 - Other expressions will be readed, althought simple expressions (with the form: "x = number") has 
+       considered as parameters expression
+## 5 - The independent variables are expreesed as y[i] where i (index) indicate which variable
+##     is being used.
+## 6 - There are predefined functions.
