@@ -28,9 +28,9 @@ nav:
     - Microorganism Growth: https://github.com/tenoriolms/procmodeling_lib/blob/main/docs/examples/gelain2015.ipynb
     - Hydrolysis of Sugarcane: https://github.com/tenoriolms/procmodeling_lib/blob/main/docs/examples/angarita2015.ipynb
 
-# extra:
-#   version:
-#     provider: mike
+extra:
+  version:
+    provider: mike
 
 markdown_extensions:
   - admonition
