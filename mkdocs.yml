@@ -24,9 +24,9 @@ nav:
   - API reference:
     - solver: apireference/1_solver.md
   - Examples (GitHub links):
-    - Lotka-Volterra optimization: https://github.com/tenoriolms/kuka_lib/blob/main/docs/examples/lotka_volterra_optimization.ipynb
-    - Microorganism Growth: https://github.com/tenoriolms/kuka_lib/blob/main/docs/examples/gelain2015.ipynb
-    - Hydrolysis of Sugarcane: https://github.com/tenoriolms/kuka_lib/blob/main/docs/examples/angarita2015.ipynb
+    - Lotka-Volterra optimization: https://github.com/tenoriolms/procmodeling_lib/blob/main/docs/examples/lotka_volterra_optimization.ipynb
+    - Microorganism Growth: https://github.com/tenoriolms/procmodeling_lib/blob/main/docs/examples/gelain2015.ipynb
+    - Hydrolysis of Sugarcane: https://github.com/tenoriolms/procmodeling_lib/blob/main/docs/examples/angarita2015.ipynb
 
 # extra:
 #   version:

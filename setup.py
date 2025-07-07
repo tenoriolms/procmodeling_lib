@@ -2,7 +2,7 @@ from setuptools import setup, find_packages
 
 setup(
     name='procmodeling',
-    version='0.0.2',
+    version='1.0.0',
     author='tenoriolms',
     description='',
     long_description='',#open('README.md').read(),
