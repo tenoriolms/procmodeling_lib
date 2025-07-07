@@ -1,15 +1,13 @@
-# y[0] = (presas)
-# y[1] = (predadores)
+# y[0] = prey population
+# y[1] = predator population
+# dydt[0] = rate of change of prey over time
+# dydt[1] = rate of change of predators over time
 
-# Parâmetros do modelo
-a = 1.0   
-# taxa de nascimento das presas
-b = 0.1    
-# taxa de predação
-d = 0.075 
-# taxa de crescimento dos predadores
-g = 1.5   
-# taxa de morte dos predadores
+# Define the parameters:
+a = 1.0    # prey birth rate
+b = 0.1    # predation rate
+d = 0.075  # predator growth rate
+g = 1.5    # predator death rate
 
 dydt[0] = a * y[0] - b * y[0] * y[1]
 dydt[1] = d * y[0] * y[1] - g * y[1]

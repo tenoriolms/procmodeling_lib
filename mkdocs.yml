@@ -1,0 +1,53 @@
+
+site_name: procmodeling
+site_url: https://github.com/tenoriolms/procmodeling_lib
+site_description: procmodeling documentation
+site_author: tenoriolms
+
+theme:
+  name: material # readthedocs
+  logo: assets/img/math3_white.png
+  favicon: assets/img/math4.png
+  features:
+    - content.code.copy
+  icon:
+    admonition:
+      note: octicons/alert-16
+    annotation: material/arrow-right-circle
+  palette:
+    - scheme: default
+      primary: blue grey
+      accent: indigo
+
+nav:
+  - About: index.md
+  - API reference:
+    - solver: apireference/1_solver.md
+  - Examples (GitHub links):
+    - Lotka-Volterra optimization: https://github.com/tenoriolms/kuka_lib/blob/main/docs/examples/lotka_volterra_optimization.ipynb
+    - Microorganism Growth: https://github.com/tenoriolms/kuka_lib/blob/main/docs/examples/gelain2015.ipynb
+    - Hydrolysis of Sugarcane: https://github.com/tenoriolms/kuka_lib/blob/main/docs/examples/angarita2015.ipynb
+
+# extra:
+#   version:
+#     provider: mike
+
+markdown_extensions:
+  - admonition
+  - pymdownx.details
+  - attr_list
+  - md_in_html
+  - pymdownx.superfences
+  - pymdownx.arithmatex:
+      generic: true
+
+  - pymdownx.highlight:
+      anchor_linenums: true
+      line_spans: __span
+      pygments_lang_class: true
+  - pymdownx.inlinehilite
+  - pymdownx.snippets
+
+extra_javascript:
+  - javascripts/mathjax.js
+  - https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js

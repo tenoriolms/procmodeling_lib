@@ -1,11 +1,3 @@
-# anda
-# anda
-# anda
-# anda
-# anda
-# anda
-# anda
-
 ## LISTA DE VARIAVEIS ##
 # y = [X, enz_F, enz_B, enz_Xy]
 # y[0] = dydt_0 = X, Biomassa

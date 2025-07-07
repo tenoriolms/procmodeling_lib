@@ -11,4 +11,4 @@ def _plot_text(text, _fontsize=14) -> object:
     ax.get_yaxis().set_visible(False)
     # Remove boders
     ax.spines[:].set_visible(False)
-    return fig
+    return fig, ax

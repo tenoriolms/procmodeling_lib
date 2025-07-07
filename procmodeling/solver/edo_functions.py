@@ -4,10 +4,23 @@ import re
 from pathlib import Path
 import matplotlib.pyplot as plt
 from tqdm import tqdm
+
 from scipy.integrate import solve_ivp
 from scipy.optimize import differential_evolution
 
-from .utils import *
+from .utils import _plot_text, _is_number, _find_and_replace_expression, _expressionlist_2_latex
+
+def _remove_comments(text:str) -> str:
+    """
+    Remove comments (starting with '#') from a multi-line string.
+    """
+    lines = text.split('\n')
+    cleaned_lines = []
+    for line in lines:
+        cleaned_line = line.split('#', 1)[0].rstrip()
+        if cleaned_line:  # opcional: remove linhas vazias
+            cleaned_lines.append(cleaned_line)
+    return '\n'.join(cleaned_lines)
 
 
 class edo_functions:
@@ -15,7 +28,7 @@ class edo_functions:
     def __init__(self, name:str, verbose:bool=True):
 
         self.verbose = verbose
-
+        
         self.diff_equations = {}
         self.expressions = {}
         self.params = {}
@@ -56,11 +69,17 @@ class edo_functions:
                         diff_equations[int(line[5])] = line.split('=')[1].strip()
                 # Read other expressions
                 elif ('=' in line):
-                    key, value = line.split('=')
+                    cleaned_line = _remove_comments(line)
+                    key, value = cleaned_line.split('=')
                     if _is_number(value):
                         params[key.strip()] = float(value.strip())
                     else:
                         expressions[key.strip()] = value.strip()
+                    # key, value = line.split('=')
+                    # if _is_number(value):
+                    #     params[key.strip()] = float(value.strip())
+                    # else:
+                    #     expressions[key.strip()] = value.strip()
 
         self.diff_equations = diff_equations
         self.expressions = expressions
@@ -93,7 +112,7 @@ class edo_functions:
                 laxtext += _expressionlist_2_latex(self.expressions.keys(), self.expressions.values(), begin=r'\Rightarrow')
             # Add the paramns in laxtext
             if self.params:
-                laxtext += r'\n $\it{Parameters:}$\n '
+                laxtext += '\n'+ r'$\it{Parameters:}$' + '\n '
                 right_text = list(map(str, self.params.values()))
                 laxtext += _expressionlist_2_latex(self.params.keys(), right_text, begin=r'\rightarrow')
         else:
@@ -143,8 +162,26 @@ class edo_functions:
     def _call_function(self, equations:list, params:dict):
         # Declare predefined functions
         predefine_func = {
+            # Exponents and logarithms
             'sqrt':np.sqrt,
-            'exp':np.exp
+            'exp':np.exp,
+            'log':np.log,
+            'log10':np.log10,
+            'log2':np.log2,
+            'log1p':np.log1p,
+            # Trigonometric functions
+            'cos':np.cos,
+            'sen':np.sin,
+            'tan':np.tan,
+            'arcsin':np.arcsin,
+            'asin':np.asin,
+            'acos':np.acos,
+            'arccos':np.arccos,
+            'arctan':np.arctan,
+            # Hyperbolic functions
+            'cosh':np.cosh,
+            'senh':np.sinh,
+            'tanh':np.tanh,
         }
 
         def ode_system(t, y):
@@ -261,6 +298,7 @@ class edo_functions:
             # Solve the edo function
             t_span = (times.min(), times.max())
             y0 = cond0
+            _plot_text(f'Initial Cond. → {y0}')
             self.solve(
                 t_span, y0,
                 _params = dict_params,
